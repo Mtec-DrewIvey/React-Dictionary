@@ -3,20 +3,21 @@ import { useState } from "react";
 export default function ToggleType({
 	leftText,
 	rightText,
-	onClick,
+	isActive,
+	setActive,
 }: {
 	leftText: string;
 	rightText: string;
 	onClick: (e: any) => void;
+	isActive: boolean;
+	setActive: any;
 }) {
-	const [isActive, setIsActive] = useState(false);
-
 	const handleClick = (button: any) => {
 		if (
 			(button === "dictionary" && !isActive) ||
 			(button === "thesaurus" && isActive)
 		) {
-			setIsActive(!isActive);
+			setActive(!isActive);
 		}
 	};
 

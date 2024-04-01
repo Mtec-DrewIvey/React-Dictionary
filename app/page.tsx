@@ -1,7 +1,10 @@
+"use client";
 import Header from "@/components/Header";
+import { useState } from "react";
 
 export default function Home() {
-	const url = "https://api.api-ninjas.com/v1/thesaurus?word=crazy";
+	const [content, setContent] = useState(<div></div>);
+
 	const options = {
 		method: "GET",
 		headers: {
@@ -9,8 +12,40 @@ export default function Home() {
 		},
 	};
 
-	async function GetThesaurus() {
+	// useEffect to keep track of data to keep in memory -
+	// React to user input - search box - Dropdown - O
+
+	async function GetDictionary(word: string) {
 		try {
+			const url = "https://api.api-ninjas.com/v1/dictionary?word=" + word;
+			const response = await fetch(url, options);
+			const result = await response.json();
+			console.log(result);
+
+			setContent(
+				<div className="flex justify-center">
+					<div className="flex flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400">
+						<h3 className="text-xl text-center">
+							Word:{" "}
+							{result.word.charAt(0).toUpperCase() + result.word.substring(1)}
+						</h3>
+						<p className="text-left">Definition: {result.definition}</p>
+					</div>
+				</div>
+			);
+		} catch (error) {
+			console.error(error);
+			setContent(
+				<div>
+					<span>Error Pulling Data</span>
+				</div>
+			);
+		}
+	}
+
+	async function GetThesaurus(word: string) {
+		try {
+			const url = "https://api.api-ninjas.com/v1/thesaurus?word=" + word;
 			const response = await fetch(url, options);
 			const result = await response.json();
 
@@ -18,7 +53,7 @@ export default function Home() {
 			const limitedSynonyms = result.synonyms.slice(0, 10).join(", ");
 			const limitedAntonyms = result.antonyms.slice(0, 10).join(", ");
 
-			return (
+			setContent(
 				<div className="flex justify-center">
 					<div className="flex flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400">
 						<h3 className="text-xl text-center">
@@ -32,7 +67,7 @@ export default function Home() {
 			);
 		} catch (error) {
 			console.error(error);
-			return (
+			setContent(
 				<div>
 					<span>Error Pulling Data</span>
 				</div>
@@ -42,8 +77,8 @@ export default function Home() {
 
 	return (
 		<>
-			<Header />
-			<GetThesaurus />
+			<Header getDictionary={GetDictionary} getThesaurus={GetThesaurus} />
+			{content}
 		</>
 	);
 }
