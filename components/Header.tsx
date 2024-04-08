@@ -17,9 +17,6 @@ export default function Header({ getDictionary, getThesaurus }: any) {
 				<ToggleType
 					rightText="Thesaurus"
 					leftText="Dictionary"
-					onClick={() => {
-						console.log("clicked");
-					}}
 					isActive={isActive}
 					setActive={setIsActive}
 				/>

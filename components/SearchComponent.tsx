@@ -10,7 +10,7 @@ export default function SearchComponent({
 	const [searchWord, setSearchWord] = useState("");
 	const [timer, setTimer] = useState(null);
 
-	//Debounce
+	//Debouncer
 	useEffect(() => {
 		if (timer) {
 			clearTimeout(timer);
@@ -26,6 +26,7 @@ export default function SearchComponent({
 				}, 500) as any
 			);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchWord, isActive]);
 
 	function setWord(event: any) {

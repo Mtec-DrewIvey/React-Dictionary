@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function ToggleType({
 	leftText,
@@ -8,7 +8,6 @@ export default function ToggleType({
 }: {
 	leftText: string;
 	rightText: string;
-	onClick: (e: any) => void;
 	isActive: boolean;
 	setActive: any;
 }) {

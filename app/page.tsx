@@ -20,7 +20,6 @@ export default function Home() {
 			const url = "https://api.api-ninjas.com/v1/dictionary?word=" + word;
 			const response = await fetch(url, options);
 			const result = await response.json();
-			console.log(result);
 
 			setContent(
 				<div className="flex justify-center">
