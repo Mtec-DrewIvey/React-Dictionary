@@ -1,6 +1,7 @@
 "use client";
 import Header from "@/components/Header";
 import { useState } from "react";
+import { ToggleActiveContext } from "./contexts/ToggleActiveContext";
 
 export default function Home() {
 	const [content, setContent] = useState(<div></div>);
@@ -76,8 +77,10 @@ export default function Home() {
 
 	return (
 		<>
+			{/* <ToggleActive value="true"> */}
 			<Header getDictionary={GetDictionary} getThesaurus={GetThesaurus} />
 			{content}
+			{/* </ToggleActive> */}
 		</>
 	);
 }

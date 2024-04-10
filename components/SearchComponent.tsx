@@ -40,6 +40,7 @@ export default function SearchComponent({
 				placeholder="Enter word here..."
 				value={searchWord}
 				onChange={setWord}
+				className="rounded-md p-2"
 			/>
 		</div>
 	);
