@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HamburgerMenu from "./HamburgerNav";
+import Link from "next/link";
 
 export default function Navigation() {
 	const [hamburgerOpen, setHambuergerOpen] = useState(false);
@@ -16,14 +17,14 @@ export default function Navigation() {
 						: "opacity-0 transition ease duration-300 invisible"
 				} h-fit w-fit mt-11 pr-4 py-4 absolute bg-blue-600 transition ease-in-out duration-700 rounded-md`}
 			>
-				<li className="pl-4 text-white xs:text-sm md:text-md lg:text-lg">
-					Home
+				<li className="pl-4 text-white xs:text-sm md:text-md lg:text-lg transition duration-300 hover:scale-105">
+					<Link href="/">Home</Link>
 				</li>
-				<li className="pl-4 text-white xs:text-sm md:text-md lg:text-lg">
-					Word of The Day
+				<li className="pl-4 text-white xs:text-sm md:text-md lg:text-lg transition duration-300 hover:scale-105">
+					<Link href="/wordoftheday">Word of The Day</Link>
 				</li>
-				<li className="pl-4 text-white xs:text-sm md:text-md lg:text-lg">
-					About
+				<li className="pl-4 text-white xs:text-sm md:text-md lg:text-lg transition duration-300 hover:scale-105">
+					<Link href="/about">About</Link>
 				</li>
 			</ul>
 			<div
