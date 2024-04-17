@@ -4,19 +4,19 @@ export default function ToggleType({
 	leftText,
 	rightText,
 	isActive,
-	setActive,
+	setIsActive,
 }: {
 	leftText: string;
 	rightText: string;
 	isActive: boolean;
-	setActive: any;
+	setIsActive: any;
 }) {
 	const handleClick = (button: any) => {
 		if (
 			(button === "dictionary" && !isActive) ||
 			(button === "thesaurus" && isActive)
 		) {
-			setActive(!isActive);
+			setIsActive(!isActive);
 		}
 	};
 

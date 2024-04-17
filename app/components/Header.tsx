@@ -4,8 +4,8 @@ import ToggleType from "./ToggleType";
 import SearchComponent from "./SearchComponent";
 import Navigation from "./Navigation";
 
-export default function Header({ getDictionary, getThesaurus }: any) {
-	const [isActive, setIsActive] = useState(true);
+export default function Header({ isActive, setIsActive }: any) {
+	// const [isActive, setIsActive] = useState(true); Commenting out to put in page.tsx so I can move searchcomponent out of header
 
 	return (
 		<div className="bg-blue-700 py-4 px-4 flex justify-between items-center">
@@ -13,17 +13,12 @@ export default function Header({ getDictionary, getThesaurus }: any) {
 				<Navigation />
 				<h1 className="text-3xl text-gray-200">Expand Your Vocabulary</h1>
 			</div>
-			<SearchComponent
-				getDictionary={getDictionary}
-				getThesaurus={getThesaurus}
-				isActive={isActive}
-			/>
 			<div>
 				<ToggleType
 					rightText="Thesaurus"
 					leftText="Dictionary"
 					isActive={isActive}
-					setActive={setIsActive}
+					setIsActive={setIsActive}
 				/>
 			</div>
 		</div>

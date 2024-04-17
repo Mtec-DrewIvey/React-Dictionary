@@ -23,24 +23,25 @@ export default function SearchComponent({
 					} else {
 						getThesaurus(searchWord);
 					}
-				}, 500) as any
+				}, 1000) as any
 			);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchWord, isActive]);
 
+	// Set search word for input...
 	function setWord(event: any) {
 		setSearchWord(event.target.value);
 	}
 
 	return (
-		<div>
+		<div className="flex justify-center items-center mt-2">
 			<input
 				type="text"
 				placeholder="Enter word here..."
 				value={searchWord}
 				onChange={setWord}
-				className="rounded-md p-2"
+				className="rounded-md p-2 border border-y-2 border-blue-800 shadow-sm shadow-sky-950"
 			/>
 		</div>
 	);
