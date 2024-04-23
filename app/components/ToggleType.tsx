@@ -1,5 +1,3 @@
-// import { useState } from "react";
-
 export default function ToggleType({
 	leftText,
 	rightText,
@@ -21,9 +19,9 @@ export default function ToggleType({
 	};
 
 	return (
-		<>
+		<div>
 			<button
-				className={`border rounded-l-lg lg:p-2 sm:p-1 text-white lg:text-sm sm:text-xs transition duration-700 ease-in-out ${
+				className={`border border-blue-700 rounded-l-lg p-2 text-white transition duration-700 ease-in-out ${
 					isActive ? "bg-blue-500" : "bg-gray-500 opacity-60"
 				}`}
 				onClick={() => handleClick("dictionary")}
@@ -31,13 +29,13 @@ export default function ToggleType({
 				{leftText}
 			</button>
 			<button
-				className={`border rounded-r-lg lg:p-2 sm:p-1 text-white lg:text-sm sm:text-xs transition duration-700 ease-in-out ${
+				className={`border border-blue-700 rounded-r-lg p-2 text-white transition duration-700 ease-in-out ${
 					isActive ? "bg-gray-500 opacity-60" : "bg-blue-500"
 				}`}
 				onClick={() => handleClick("thesaurus")}
 			>
 				{rightText}
 			</button>
-		</>
+		</div>
 	);
 }

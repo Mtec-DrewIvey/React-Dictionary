@@ -9,8 +9,9 @@ export default function SearchComponent({
 }: any) {
 	const [searchWord, setSearchWord] = useState("");
 	const [timer, setTimer] = useState(null);
+	const [recentWords, setRecentWord] = useState([]);
 
-	//Debouncer
+	//Debouncer -- set timer to listen to user stop typing before calling API
 	useEffect(() => {
 		if (timer) {
 			clearTimeout(timer);
@@ -20,18 +21,32 @@ export default function SearchComponent({
 				setTimeout(() => {
 					if (isActive) {
 						getDictionary(searchWord);
+						updateRecentSearches(searchWord);
 					} else {
 						getThesaurus(searchWord);
+						updateRecentSearches(searchWord);
 					}
-				}, 1000) as any
+				}, 500) as any
 			);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchWord, isActive]);
 
-	// Set search word for input...
+	// Set search word for input
 	function setWord(event: any) {
 		setSearchWord(event.target.value);
+	}
+
+	function updateRecentSearches(searchWord: string) {
+		let recentSearches: string[] = JSON.parse(
+			localStorage.getItem("recentSearches") || "[]"
+		);
+		recentSearches = recentSearches.filter((word) => word !== searchWord);
+		recentSearches.unshift(searchWord);
+		localStorage.setItem(
+			"recentSearches",
+			JSON.stringify(recentSearches.slice(0, 5))
+		);
 	}
 
 	return (

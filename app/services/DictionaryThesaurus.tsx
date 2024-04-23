@@ -12,7 +12,7 @@ export async function GetDictionary(word: string, setContent: Function) {
 		const result = await response.json();
 		setContent(
 			<div className="flex justify-center">
-				<div className="flex flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400 max-w-72">
+				<div className="flex min-h-32 overflow-y-auto flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400">
 					<h3 className="text-xl text-center font-bold italic">
 						{result.word.charAt(0).toUpperCase() + result.word.substring(1)}
 					</h3>
@@ -41,8 +41,8 @@ export async function GetThesaurus(word: string, setContent: Function) {
 		const limitedAntonyms = result.antonyms.slice(0, 10).join(", ");
 
 		setContent(
-			<div className="flex justify-center max-h-96">
-				<div className="flex flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400 w-10/12">
+			<div className="flex justify-center">
+				<div className="flex min-h-32 overflow-y-auto flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400">
 					<h3 className="text-xl text-center font-bold italic">
 						{result.word.charAt(0).toUpperCase() + result.word.substring(1)}
 					</h3>
