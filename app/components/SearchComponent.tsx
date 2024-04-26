@@ -9,7 +9,6 @@ export default function SearchComponent({
 }: any) {
 	const [searchWord, setSearchWord] = useState("");
 	const [timer, setTimer] = useState(null);
-	const [recentWords, setRecentWord] = useState([]);
 
 	//Debouncer -- set timer to listen to user stop typing before calling API
 	useEffect(() => {
@@ -56,7 +55,7 @@ export default function SearchComponent({
 				placeholder="Enter word here..."
 				value={searchWord}
 				onChange={setWord}
-				className="rounded-md p-2 border border-y-2 border-blue-800 shadow-sm shadow-sky-950"
+				className="rounded-md p-2 border border-y-2 border-blue-800 shadow-sm shadow-sky-950 hover:cursor-pointer"
 			/>
 		</div>
 	);

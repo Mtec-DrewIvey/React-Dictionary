@@ -1,7 +1,9 @@
 const options = {
 	method: "GET",
 	headers: {
-		"X-Api-Key": "ck3T3oJerkxpJohbEz7n5w==XtlGJQpWMVMTuUQ9",
+		"X-Api-Key":
+			(process.env.MY_DICT_KEY as string) ||
+			"ck3T3oJerkxpJohbEz7n5w==XtlGJQpWMVMTuUQ9", // Tried to set up api key in .env.local, couldn't find out how to make it work.
 	},
 };
 
@@ -10,14 +12,15 @@ export async function GetDictionary(word: string, setContent: Function) {
 		const url = "https://api.api-ninjas.com/v1/dictionary?word=" + word;
 		const response = await fetch(url, options);
 		const result = await response.json();
+		console.log("API Key:");
+
+		console.log(url);
 		setContent(
-			<div className="flex justify-center">
-				<div className="flex min-h-32 overflow-y-auto flex-col m-4 p-4 border border-blue-800 shadow-md shadow-slate-400">
-					<h3 className="text-xl text-center font-bold italic">
-						{result.word.charAt(0).toUpperCase() + result.word.substring(1)}
-					</h3>
-					<p className="text-left text-md font-medium">{result.definition}</p>
-				</div>
+			<div className="flex max-h-full min-h-48 overflow-y-auto flex-col m-4 mr-16 p-4 border border-blue-800 shadow-md shadow-slate-400">
+				<h3 className="text-xl text-center font-bold italic">
+					{result.word.charAt(0).toUpperCase() + result.word.substring(1)}
+				</h3>
+				<p className="text-left text-md font-medium">{result.definition}</p>
 			</div>
 		);
 	} catch (error) {

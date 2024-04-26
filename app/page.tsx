@@ -30,8 +30,10 @@ export default function Home() {
 					/>
 				</div>
 			</div>
-			<RecentSearchesComponent />
-			{content}
+			<div className="flex gap-8 mb-12 max-h-[550px]">
+				<RecentSearchesComponent />
+				{content}
+			</div>
 		</>
 	);
 }
